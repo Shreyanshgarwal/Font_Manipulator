@@ -1,3 +1,8 @@
+diffrence=0;
+rightWristX=0;
+leftWristX=0;
+
+
 function setup() {
     video=createCapture(VIDEO);
     video.size(550,500);
@@ -16,14 +21,19 @@ function setup() {
 function gotPoses(results) {
         if (results.length > 0) {
 
-            console.log(results);  
+            console.log(results); 
+            
+            rightWristX=results[0].pose.rightWrist.x;
+            leftWristX=results[0].pose.leftWrist.x;
+            diffrence= floor(leftWristX-rightWristX);
+            
+            console.log("rightWristX =" + rightWristX +"leftWristX =" + leftWristX +"diffrence =" + diffrence);
             }
 }
 
 function draw() {
-
-}
-
-function draw() {
     background('#969A97');
+    textSize(diffrence);
+    fill('#034733');
+    text(Shreyansh,50,400)
 }
